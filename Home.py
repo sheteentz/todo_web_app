@@ -3,6 +3,8 @@ from modules import functions
 
 todos = functions.get_todos()
 
+st.set_page_config(layout="wide")
+
 def add_todo():
     todo_local = st.session_state["new_todo"] + "\n"
     todos.append(todo_local)
@@ -11,7 +13,8 @@ def add_todo():
 
 st.title("My Todo App")
 st.subheader("This is my todo app")
-st.write("This app will increase my productivity")
+st.write("This app will increase my <b>productivity</b>",
+         unsafe_allow_html=True)#only write has html enabled in streamlit
 
 for index, todo in enumerate(todos):
     checkbox = st.checkbox(todo, key=todo)
